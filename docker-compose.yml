@@ -1,4 +1,23 @@
 services:
+  front:
+    build: ./front
+    container_name: gym_front
+    restart: always
+    ports:
+      - "8081:8081"
+      - "19000:19000"
+      - "19001:19001"
+    environment:
+      EXPO_OFFLINE: "1"
+      API_URL: http://api:3000
+    depends_on:
+      - api
+    volumes:
+      - ./front:/app
+      - /app/node_modules
+    networks:
+      - gym_net
+
   api:
     build: ./backend
     container_name: gym_api
@@ -9,6 +28,8 @@ services:
       MONGO_URL: mongodb://mongo:27017/gymdb
     depends_on:
       - mongo
+    networks:
+      - gym_net
 
   mongo:
     image: mongo:6
@@ -18,6 +39,12 @@ services:
       - "27018:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - gym_net
 
 volumes:
   mongo_data:
+
+networks:
+  gym_net:
+    driver: bridge
