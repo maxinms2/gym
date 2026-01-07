@@ -1,0 +1,14 @@
+services:
+  front:
+    build: ./front
+    container_name: gym_front
+    restart: always
+    ports:
+      - "8081:8081"
+      - "19000:19000"
+      - "19001:19001"
+    environment:
+      API_URL: http://host.docker.internal:3000
+    volumes:
+      - ./front:/app
+      - /app/node_modules

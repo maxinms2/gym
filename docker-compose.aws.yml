@@ -1,22 +1,7 @@
 services:
-  front:
-    build: ./front
-    container_name: gym_front
-    restart: always
-    ports:
-      - "8081:8081"
-      - "19000:19000"
-      - "19001:19001"
-    environment:
-      API_URL: http://98.80.5.124:3000
-    depends_on:
-      - api
-    networks:
-      - gym_net
-
   api:
     build: ./backend
-    container_name: gym_api
+    container_name: gym_api_aws
     restart: always
     ports:
       - "3000:3000"
@@ -29,7 +14,7 @@ services:
 
   mongo:
     image: mongo:6
-    container_name: gym_mongo
+    container_name: gym_mongo_aws
     restart: always
     ports:
       - "27018:27017"
