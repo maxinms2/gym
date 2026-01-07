@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@react-navigation/native": "^7.1.22",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "expo": "^54.0.30",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
+  }
+}
