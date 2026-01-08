@@ -1,0 +1,12 @@
+services:
+  front:
+    build:
+      context: ./front
+      args:
+        API_URL: http://54.234.20.89:3000
+    container_name: gym_front_aws_prod
+    restart: always
+    ports:
+      - "8081:8081"
+      - "19000:19000"
+      - "19001:19001"
