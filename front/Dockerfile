@@ -11,6 +11,7 @@ COPY . .
 
 EXPOSE 8081 19000 19001 19002
 
-ENV API_URL=http://host.docker.internal:3000
+ARG API_URL=http://host.docker.internal:3000
+ENV EXPO_PUBLIC_API_URL=${API_URL}
 
 CMD ["npm", "start"]

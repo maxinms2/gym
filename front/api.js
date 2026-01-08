@@ -5,8 +5,9 @@ import Constants from 'expo-constants';
 
 const getApiUrl = () => {
   // Si está en Docker, usa la variable de entorno
-  if (process.env.API_URL) {
-    return process.env.API_URL;
+  const envApiUrl = process.env.EXPO_PUBLIC_API_URL || process.env.API_URL;
+  if (envApiUrl) {
+    return envApiUrl;
   }
   
   // Para Expo Go: detecta automáticamente la IP desde Expo
